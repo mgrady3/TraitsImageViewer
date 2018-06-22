@@ -1,0 +1,12 @@
+
+# build stuff
+build/
+dist/
+
+# dev stuff
+.vscode/
+
+# misc
+__pycache__/
+.DS_Store
+
