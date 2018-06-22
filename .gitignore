@@ -5,8 +5,12 @@ dist/
 
 # dev stuff
 .vscode/
+TraitsImageViewer/.vscode/
+
 
 # misc
+TraitsImageViewer/__pycache__/
+TraitsImageViewer/.cache/
 __pycache__/
 .DS_Store
 
