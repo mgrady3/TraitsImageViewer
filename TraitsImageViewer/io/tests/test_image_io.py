@@ -23,4 +23,5 @@ class TestImageIO(object):
         # then
         assert isinstance(im, TIV.models.ImageModel.ImageModel)
         assert im.color_depth == 3  # RGB image
+        assert im.data.shape[2] == 3
 
