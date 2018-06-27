@@ -9,8 +9,7 @@ TraitsImageViewer/.vscode/
 
 
 # misc
-TraitsImageViewer/__pycache__/
 TraitsImageViewer/.cache/
-__pycache__/
+**/__pycache__/
 .DS_Store
 
