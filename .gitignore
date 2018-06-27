@@ -15,3 +15,8 @@ TraitsImageViewer/.vscode/
 **/.DS_Store
 **/.py[cod]
 
+# project specific
+TraitsImageViewer/models/__pycache__/
+TraitsImageViewer/models/tests/__pycache__/
+TraitsImageViewer/io/__pycache__/
+TraitsImageViewer/io/tests/__pycache__/
