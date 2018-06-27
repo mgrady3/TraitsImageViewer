@@ -18,7 +18,7 @@ def load_image_from_file_PIL(path):
         pass
     data = np.array(im)
     if data.ndim == 2:
-        cd = 0  # greyscale
+        cd = 1  # greyscale
     elif data.ndim == 3:
         cd = 3  # RGB
     elif data.ndim == 4:
