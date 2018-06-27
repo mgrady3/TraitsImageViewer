@@ -9,4 +9,5 @@ setup(
     description = 'Static image viewer using traits and model/view',
     packages = find_packages(),    
     install_requires = ['numpy', 'PyQt5', 'pyqtgraph >= 0.10.0', ],
+    include_package_data=True,
 )
