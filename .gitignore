@@ -2,6 +2,7 @@
 # build stuff
 build/
 dist/
+TraitsImageViewer.egg-info/
 
 # dev stuff
 .vscode/
@@ -9,7 +10,8 @@ TraitsImageViewer/.vscode/
 
 
 # misc
-TraitsImageViewer/.cache/
-**/__pycache__/
-.DS_Store
+**.cache/
+**/__pycache__
+**/.DS_Store
+**/.py[cod]
 
