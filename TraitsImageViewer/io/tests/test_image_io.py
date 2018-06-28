@@ -11,6 +11,20 @@ import TraitsImageViewer.io.ImageIO as imio
 
 class TestImageIO(object):
 
+    def test_load_image_greyscale_PIL(self):
+         # given
+        image_path = op.realpath(op.join(TIV.__file__,
+                                         os.pardir,
+                                         "test_data",
+                                         "ozark-mountains-bw.jpg"))
+        # when
+        im = imio.load_image_from_file_PIL(image_path)
+
+        # then
+        assert isinstance(im, TIV.models.ImageModel.ImageModel)
+        assert im.color_depth == 1  # Greyscale image
+        assert im.data.ndim == 2
+
     def test_load_image_RGB_PIL(self):
         # given
         image_path = op.realpath(op.join(TIV.__file__,
@@ -25,19 +39,20 @@ class TestImageIO(object):
         assert im.color_depth == 3  # RGB image
         assert im.data.ndim == 3
         assert im.data.shape[2] == 3
-
-    def test_load_image_greyscale_PIL(self):
+        
+    def test_load_image_RGBA_PIL(self):
          # given
         image_path = op.realpath(op.join(TIV.__file__,
                                          os.pardir,
                                          "test_data",
-                                         "ozark-mountains-bw.jpg"))
+                                         "AlphaBall.png"))
         # when
         im = imio.load_image_from_file_PIL(image_path)
 
         # then
         assert isinstance(im, TIV.models.ImageModel.ImageModel)
-        assert im.color_depth == 1  # Greyscale image
-        assert im.data.ndim == 2
+        assert im.color_depth == 4  # RGBAGreyscale image
+        assert im.data.ndim == 3
+
 
 
