@@ -17,12 +17,13 @@ def load_image_from_file_PIL(path):
         # TODO fill in appropriate I/O errors
         pass
     data = np.array(im)
+    # print("Loaded Data: shape - {} ndim - {}".format(data.shape, data.ndim))
 
     if data.ndim == 2:
         cd = 1  # greyscale
     elif data.ndim == 3 and data.shape[2] == 3:
         cd = 3  # RGB 
-    elif data.ndim == 4 and data.shape[2] == 4:
+    elif data.ndim == 3 and data.shape[2] == 4:
         cd = 4  # RGBA or ARGB
     else:
         # TODO: Handle invalid ndim
