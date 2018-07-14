@@ -49,8 +49,8 @@ def gen_test_model_random3D_RGBA():
     # 250 512x512 images stored in RGBA ---> 250x4=1000
     # Total array size (512, 512, 1000) 
     test_data = np.random.randint(0,
-                                    2**16 -1,
-                                    (512, 512, 1000)).astype(np.int64)
+                                  2**16 -1,
+                                  (512, 512, 1000)).astype(np.int64)
     return ImageModel(
         color_depth=4,
         data=test_data,
