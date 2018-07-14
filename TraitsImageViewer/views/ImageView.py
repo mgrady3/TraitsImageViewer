@@ -64,4 +64,3 @@ def gen_test_model_actual_image_BW():
                                          "test_data",
                                          "ozark-mountains-bw.jpg"))
     return load_image_from_file_PIL(image_path)
-
