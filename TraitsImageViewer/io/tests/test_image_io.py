@@ -54,5 +54,26 @@ class TestImageIO(object):
         assert im.color_depth == 4  # RGBAGreyscale image
         assert im.data.ndim == 3
 
+    def test_load_image_from_file_raw_2D(self):
+        # given
+        image_path = op.realpath(op.join(TIV.__file__,
+                                         os.pardir,
+                                         "test_data",
+                                         "test-LEEM.dat"))
+        ht = 600
+        wd = 592
+        bits = 16
+        byte_order = 'L'
 
+        # when
+        image = imio.load_image_from_file_raw_2D(path=image_path,
+                                                 ht=ht,
+                                                 wd=wd,
+                                                 bits=bits,
+                                                 byte_order=byte_order
+                                                )
 
+        # then
+        assert isinstance(image, np.ndarray)
+        assert image.ndim == 2
+        assert image.shape == (ht, wd)
