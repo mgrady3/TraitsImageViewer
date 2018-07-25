@@ -96,4 +96,33 @@ def load_image_from_file_raw_2D(path, ht=None, wd=None,
         return np.fromstring(f.read()[header_length:],
                                 formatstring).reshape((ht, wd))
     
-       
+def load_image_stack(image_type, **kwargs):
+    if not image_type.lower() in ('raw', 'image'):
+        raise InvalidParameterError
+    if image_type.lower() == 'raw':
+        return self.load_image_stack_raw(**kwargs)    
+    return self.load_image_stack_PIL(**kwargs)
+
+def load_image_stack_raw(self, **kwargs):
+    """ Load 3D Image Stack from raw data files.
+
+    :param path: str to directory containg files to load
+    :param ext: str file extension
+    :param width: int image width
+    :param height: int image height
+    :param bits: int bits per pixel
+    :param byte_order: str byte_order of data ('L' or 'M')
+    """
+    pass
+
+def load_image_stack_PIL(self, **kwargs):
+    """ Load 3D Image Stack using PIL.Image.Open
+    
+    :param path: str to directory containg files to load
+    :param ext: str file extension
+    """
+    pass
+
+
+
+
