@@ -1,0 +1,17 @@
+Traits-ImageViewer
+    - TraitsImageViewer
+        - __init__.py
+        - setup.py
+        - README.md
+        - io/
+            - ImageIO.py
+            - tests/
+                - test_image_io.py
+        - models/
+            - __init__.py
+            - imagemodel.py
+            - tests/
+                - test_imagemodel.py
+        - views/
+            - __init__.py
+            - imageview.py
