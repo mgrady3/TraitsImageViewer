@@ -8,7 +8,7 @@ also read and write raw data (.dat files).
 import numpy as np
 import os
 from PIL import Image
-from TraitsImageViewer.models.ImageModel import ImageModel
+from TraitsImageViewer.models.ImageModel import ImageModel, ImageStack
 
 
 class InvalidParameterError(Exception):
@@ -103,23 +103,47 @@ def load_image_stack(image_type, **kwargs):
         return self.load_image_stack_raw(**kwargs)    
     return self.load_image_stack_PIL(**kwargs)
 
-def load_image_stack_raw(self, **kwargs):
+def load_image_stack_raw(**kwargs):
     """ Load 3D Image Stack from raw data files.
 
-    :param path: str to directory containg files to load
+    :param path: str to directory containing files to load
     :param ext: str file extension
     :param width: int image width
     :param height: int image height
     :param bits: int bits per pixel
     :param byte_order: str byte_order of data ('L' or 'M')
-    """
-    pass
 
-def load_image_stack_PIL(self, **kwargs):
+    :return ims: TraitsImageViewer.models.ImageModel.ImageStack
+    """
+    path = kwargs['path']
+    ext = kwargs['ext']
+    files = sorted([name for name in os.listdir(path)
+                         if name.endswith(ext)])
+    arrays = []
+    for fl in files:
+        im_data = load_image_from_file_raw_2D(path=os.path.join(path, fl),
+                                              ht=kwargs['height'],
+                                              wd=kwargs['width'],
+                                              bits=kwargs['bits'],
+                                              byte_order=kwargs['byte_order']
+                                              )
+        arrays.append(im_data)
+    arrays = np.dstack(arrays)
+    return ImageStack(color_depth=1,
+                      data=arrays,
+                      depth=arrays.shape[2],
+                      height=arrays.shape[0],
+                      width=arrays.shape[1])
+        
+
+
+def load_image_stack_PIL(**kwargs):
     """ Load 3D Image Stack using PIL.Image.Open
     
-    :param path: str to directory containg files to load
+    :param path: str to directory containing files to load
     :param ext: str file extension
+
+    :return ims: TraitsImageViewer.models.ImageModel.ImageStack
     """
     pass
 
