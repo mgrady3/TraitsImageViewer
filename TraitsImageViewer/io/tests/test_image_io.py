@@ -77,3 +77,32 @@ class TestImageIO(object):
         assert isinstance(image, np.ndarray)
         assert image.ndim == 2
         assert image.shape == (ht, wd)
+
+    def test_load_image_stack_raw(self):
+        # given
+
+        # test data with 5 images
+        image_path = op.realpath(op.join(TIV.__file__,
+                                         os.pardir,
+                                         "test_data",
+                                         "test-stack-raw"
+                                         ))
+        ht = 600
+        wd = 592
+        bits = 16
+        byte_order = 'L'
+
+        # when
+        ims = imio.load_image_stack_raw(path=image_path,
+                                        ext='.dat',
+                                        height=ht,
+                                        width=wd,
+                                        bits=bits,
+                                        byte_order=byte_order
+                                        )
+
+
+        # then
+        assert isinstance(ims, TIV.models.ImageModel.ImageStack)
+        assert ims.data.ndim == 3
+        assert ims.data.shape[2] == 5
